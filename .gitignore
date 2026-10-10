@@ -1,0 +1,10 @@
+# secrets — never commit
+.env
+
+# python
+__pycache__/
+*.pyc
+
+# generated output
+generated-images/
+product-images/
