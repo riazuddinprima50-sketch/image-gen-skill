@@ -9,6 +9,12 @@ gallery.
 
 ---
 
+## 效果示例
+
+| 白底主图 `pdd-main`+`3c-white` | 场景图 `pdd-scene`+`home` | 国潮海报 `pdd-poster`+`guochao` |
+|---|---|---|
+| ![main](examples/01-main.png) | ![scene](examples/02-scene.png) | ![poster](examples/03-poster.png) |
+
 ## 它解决什么
 
 通用生图工具能"画一张图"，但电商要的是**可复制的流水线**：白底主图、场景图、
