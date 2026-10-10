@@ -45,7 +45,7 @@ def cfg(key, default=None):
     return os.environ.get(key) or _ENV_FILE.get(key) or default
 
 
-API_BASE = cfg("IMAGE_API_BASE", "https://magic.shyfai.cn/v1").rstrip("/")
+API_BASE = cfg("IMAGE_API_BASE", "").rstrip("/")
 API_KEY = cfg("IMAGE_API_KEY")
 DEFAULT_MODEL = cfg("IMAGE_MODEL", "gpt-image-2.5")
 
@@ -181,7 +181,7 @@ def call_generation(args, headers):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Generate or edit images (shyfai relay / gpt-image).")
+    ap = argparse.ArgumentParser(description="Generate or edit images via an OpenAI-compatible API.")
     ap.add_argument("prompt", nargs="?", help="image description / edit instruction / product subject")
     ap.add_argument("--model", default=None, help="model id (default: %s)" % DEFAULT_MODEL)
     ap.add_argument("--size", default=None, help="e.g. 1024x1024, 1536x1024, 1024x1536, auto")
@@ -238,6 +238,9 @@ def main():
 
     if not API_KEY:
         sys.exit("ERROR: IMAGE_API_KEY not set. Put it in %s/.env" % SCRIPT_DIR)
+    if not API_BASE:
+        sys.exit("ERROR: IMAGE_API_BASE not set. Put it in %s/.env "
+                 "(e.g. https://your-relay.example/v1)" % SCRIPT_DIR)
     if args.n < 1:
         sys.exit("ERROR: --n must be >= 1")
 

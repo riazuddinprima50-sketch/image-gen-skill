@@ -1,26 +1,30 @@
 ---
 name: image-gen
-description: Generate and edit images (生图 / 改图 / 图生图 / 商品图 / 海报) using an OpenAI-compatible relay at magic.shyfai.cn with gpt-image models. Use when the user asks to generate an image, create a product/电商图, poster, logo, illustration, or to edit/modify an existing image (改图, 换背景, 加元素, 图生图), or mentions 生图, 生成图片, 画一张, gpt-image, shyfai, magic.shyfai.
+description: Generate and edit images (生图 / 改图 / 图生图 / 商品图 / 海报) using any OpenAI-compatible image API (gpt-image and similar). Use when the user asks to generate an image, create a product/电商图, poster, logo, illustration, or to edit/modify an existing image (改图, 换背景, 加元素, 图生图), or mentions 生图, 生成图片, 画一张, gpt-image, 商品图.
 ---
 
 # image-gen
 
-Generate and edit images through the shyfai relay (`https://magic.shyfai.cn/v1`,
-OpenAI-compatible, `gpt-image` family). Outputs are downloaded locally as PNG.
+Generate and edit images through any **OpenAI-compatible** image API
+(`/images/generations` and `/images/edits`), e.g. a relay serving the
+`gpt-image` family. Point it at your own endpoint + key via `.env`. Outputs are
+downloaded locally as PNG, with a PDD/e-commerce template system and a local
+gallery for viewing.
 
 ## When to use
 
 - User wants a **new image** from a text prompt (生图 / 画一张 / 商品图 / 海报 / 插画 / logo).
 - User wants to **edit an existing image** (改图 / 换背景 / 加/去掉元素 / 图生图 / 保持一致的系列图).
-- User references `gpt-image`, `magic.shyfai`, or this repo's image workflow.
+- User references `gpt-image` or this repo's image workflow.
 
 ## Config
 
 Credentials live in `.env` next to this skill (`IMAGE_API_KEY`, `IMAGE_API_BASE`,
 `IMAGE_MODEL`). Environment variables override the file. Never print the key.
+Copy `.env.example` to `.env` and fill in your own endpoint + key.
 
-Available models (from `/v1/models`): `gpt-image-2`, `gpt-image-2.5`,
-`gpt-image-2.5-flare`, `gpt-image-2.5-sunburst`, `codex-gpt-image-2`.
+Model ids depend on your provider — list them with `GET {API_BASE}/models`.
+Common OpenAI-style ids: `gpt-image-1`, `gpt-image-2`, `gpt-image-2.5`.
 
 ## Usage
 
